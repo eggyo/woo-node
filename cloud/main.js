@@ -66,7 +66,7 @@ Parse.Cloud.define('testOrder', function(req, response) {
   ]
 };
 
-WooCommerce.post('orders', data, function(err, data, res) {
+WooCommerce.post('orders', dataReq, function(err, data, res) {
   console.log(res);
   response.success(data);
 
@@ -99,7 +99,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
   console.log(dataReq);
 
 
-  WooCommerce.post('products', data, function(err, data, res) {
+  WooCommerce.post('products', dataReq, function(err, data, res) {
     console.log(res);
     console.log(err);
 
