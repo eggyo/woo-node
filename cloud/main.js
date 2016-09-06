@@ -84,19 +84,25 @@ Parse.Cloud.define('postProducts', function(req, response) {
   regular_price: '100',
   description: 'รายละเอียดสินค้าแบบยาว',
   short_description: 'รายละเอียดสินค้าแบบสั้น',
-  images:
+  images:[
     {
       src: scrUrl,
       position: 0
     }
+  ]
 };
 
   console.log(dataReq);
 
 
   WooCommerce.post('products', dataReq, function(err, data, res) {
-    console.log(res);
-    console.log(err);
+    if (err == null) {
+      console.log(res);
+      var resultsID = res.id;
+      console.log("done id:"+resultsID);
+
+
+    }
 
     response.success(res);
   });
