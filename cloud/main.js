@@ -15,7 +15,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
   var nameStr = reqData.name;
   var scrUrl = reqData.images.src;
 
-  var data = {
+  var dataReq = {
     name: nameStr,
     regular_price: '21.99',
     description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
@@ -38,8 +38,10 @@ Parse.Cloud.define('postProducts', function(req, response) {
 
 
 
-  wooCommerce.post('/products', data, function(err, data, res) {
-    console.log(res);
+  wooCommerce.post('/products', dataReq, function(err, data, res) {
+    console.log(data);
+    console.log("post error:"+err);
+
     response.success("create product done");
   });
 });
