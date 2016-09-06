@@ -98,8 +98,9 @@ Parse.Cloud.define('postProducts', function(req, response) {
   WooCommerce.post('products', dataReq, function(err, data, res) {
     if (err == null) {
       console.log(res);
-      var resultsID = res.id;
-      console.log("done id:"+resultsID);
+
+      var resultsID = JSON.parse(res);
+      console.log("done id:"+resultsID.id);
 
 
     }
