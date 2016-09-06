@@ -50,7 +50,7 @@ app.get('/', function(req, res) {
 app.get('/test', function(req, res) {
   //res.sendFile(path.join(__dirname, '/public/test.html'));
   wooCommerce.get('/products', function(err, data, res){
-    res.send(res);
+    res.json(res);
   });
 });
 
