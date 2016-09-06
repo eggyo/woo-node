@@ -98,7 +98,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
       var data2 = {
         images:[
           {
-            src: scrUrl,
+            src: 'https://scontent.fbkk5-5.fna.fbcdn.net/v/t1.0-9/14212121_1359718587390331_4588487017505913846_n.jpg?oh=48eb1c56f8fac3257d18a95623444dc8&oe=584C676B',
             position: 0
           }
         ]
