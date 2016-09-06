@@ -2,6 +2,7 @@ var WooCommerce = require('woocommerce');
 var wooCommerce = new WooCommerce({
   url: 'http://klangsang-led.com',
   ssl: true,
+  logLevel:1,
   consumerKey: 'ck_e95a3d1d2224538dfe42ac8fd84b48a408f5d2d1',
   secret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
 });
