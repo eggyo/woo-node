@@ -19,16 +19,8 @@ Parse.Cloud.define('postProducts', function(req, response) {
   name: nameStr,
   type: 'simple',
   regular_price: '21.99',
-  description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-  short_description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-  categories: [
-    {
-      id: 9
-    },
-    {
-      id: 14
-    }
-  ],
+  description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac',
+  short_description: 'Pellentesque habitant ',
   images: [
     {
       src: scrUrl,
@@ -41,11 +33,13 @@ Parse.Cloud.define('postProducts', function(req, response) {
   ]
 };
 
-  console.log("shit"+dataReq);
+  console.log(dataReq);
 
 
   wooCommerce.post('/products', dataReq, function(err, data, res) {
-    console.log("fuck"+data);
+    console.log(data);
+    console.log(res);
+
     console.log("post error:"+err);
 
     response.success(data);
