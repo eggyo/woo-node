@@ -4,6 +4,12 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
+var WooCommerce = require('woocommerce');
+var wooCommerce = new WooCommerce({
+  url: 'http://klangsang-led.com',
+  consumerKey: 'ck_e95a3d1d2224538dfe42ac8fd84b48a408f5d2d1',
+  secret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
+});
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -42,7 +48,10 @@ app.get('/', function(req, res) {
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
 app.get('/test', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public/test.html'));
+  //res.sendFile(path.join(__dirname, '/public/test.html'));
+  wooCommerce.get('/products', function(err, data, res){
+    res.send(res);
+  });
 });
 
 var port = process.env.PORT || 1337;
