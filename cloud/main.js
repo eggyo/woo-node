@@ -5,6 +5,6 @@ Parse.Cloud.define('hello', function(req, res) {
 
 
 Parse.Cloud.define('postProducts', function(req, res) {
-  res.success(req);
+  res.success(req.params.data);
   console.log(req);
 });
