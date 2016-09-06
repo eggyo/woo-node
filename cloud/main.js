@@ -48,6 +48,6 @@ Parse.Cloud.define('postProducts', function(req, response) {
     console.log(data);
     console.log("post error:"+err);
 
-    response.success("create product done");
+    response.success(data);
   });
 });
