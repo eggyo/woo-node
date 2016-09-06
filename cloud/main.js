@@ -56,7 +56,7 @@ Parse.Cloud.define('testOrder', function(req, response) {
   ]
 };
 
-wooCommerce.post('orders', data, function(err, data, res) {
+wooCommerce.post('/orders', data, function(err, data, res) {
   console.log(res);
   response.success(data);
 
