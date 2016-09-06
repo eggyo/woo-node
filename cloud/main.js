@@ -81,17 +81,13 @@ Parse.Cloud.define('postProducts', function(req, response) {
   var dataReq = {
   name: nameStr,
   type: 'simple',
-  regular_price: '21.99',
-  description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac',
-  short_description: 'Pellentesque habitant ',
+  regular_price: '100',
+  description: 'รายละเอียดสินค้าแบบยาว',
+  short_description: 'รายละเอียดสินค้าแบบสั้น',
   images: [
     {
       src: scrUrl,
       position: 0
-    },
-    {
-      src: scrUrl,
-      position: 1
     }
   ]
 };
