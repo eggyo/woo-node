@@ -13,7 +13,8 @@
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-server": "~2.2.12",
-    "woocommerce": "^2.2.2"
+    "woocommerce": "^2.2.2",
+    "woocommerce-api": "^1.4.0"
   },
   "scripts": {
     "start": "node index.js"

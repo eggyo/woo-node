@@ -1,13 +1,23 @@
-var WooCommerce = require('woocommerce');
+/*var WooCommerce = require('woocommerce');
 var wooCommerce = new WooCommerce({
   url: 'http://klangsang-led.com',
   logLevel:1,
   consumerKey: 'ck_e95a3d1d2224538dfe42ac8fd84b48a408f5d2d1',
   secret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
+});*/
+var WooCommerceAPI = require('woocommerce-api');
+
+var WooCommerce = new WooCommerceAPI({
+  url: 'http://klangsang-led.com',
+  wpAPI: true,
+  version: 'wc/v1',
+  consumerKey: 'ck_e95a3d1d2224538dfe42ac8fd84b48a408f5d2d1',
+  consumerSecret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
 });
 
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
+
 });
 
 Parse.Cloud.define('testOrder', function(req, response) {
@@ -56,7 +66,7 @@ Parse.Cloud.define('testOrder', function(req, response) {
   ]
 };
 
-wooCommerce.post('/orders', data, function(err, data, res) {
+WooCommerce.post('orders', data, function(err, data, res) {
   console.log(res);
   response.success(data);
 
@@ -89,10 +99,8 @@ Parse.Cloud.define('postProducts', function(req, response) {
   console.log(dataReq);
 
 
-  wooCommerce.post('/products', dataReq, function(err, data, res) {
-    console.log(data);
-    console.log("post error:"+err);
-
+  WooCommerce.post('products', data, function(err, data, res) {
+    console.log(res);
     response.success(data);
   });
 });
