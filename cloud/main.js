@@ -13,7 +13,7 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define('postProducts', function(req, response) {
   var reqData = req.params.data;
   var nameStr = reqData.name;
-  var scrUrl = reqData.images.src;
+  var scrUrl = reqData.picUrl;
 
   var dataReq = {
     name: nameStr,
@@ -37,6 +37,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
     ]
   };
 
+  console.log(dataReq);
 
 
   wooCommerce.post('/products', dataReq, function(err, data, res) {
