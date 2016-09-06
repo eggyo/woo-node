@@ -53,6 +53,10 @@ app.get('/test', function(request, response) {
     response.json(res);
   });
 });
+app.post('/products', function(request, response){
+    console.log(request.params.data);
+});
+
 
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
