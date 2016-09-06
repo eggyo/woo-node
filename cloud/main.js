@@ -84,12 +84,11 @@ Parse.Cloud.define('postProducts', function(req, response) {
   regular_price: '100',
   description: 'รายละเอียดสินค้าแบบยาว',
   short_description: 'รายละเอียดสินค้าแบบสั้น',
-  images: [
+  images:
     {
       src: scrUrl,
       position: 0
     }
-  ]
 };
 
   console.log(dataReq);
