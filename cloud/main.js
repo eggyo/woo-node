@@ -101,6 +101,8 @@ Parse.Cloud.define('postProducts', function(req, response) {
 
   WooCommerce.post('products', data, function(err, data, res) {
     console.log(res);
-    response.success(data);
+    console.log(err);
+
+    response.success(res);
   });
 });
