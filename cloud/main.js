@@ -41,11 +41,11 @@ Parse.Cloud.define('postProducts', function(req, response) {
   ]
 };
 
-  console.log(dataReq);
+  console.log("shit"+dataReq);
 
 
   wooCommerce.post('/products', dataReq, function(err, data, res) {
-    console.log(data);
+    console.log("fuck"+data);
     console.log("post error:"+err);
 
     response.success(data);
