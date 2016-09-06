@@ -1,6 +1,7 @@
 var WooCommerce = require('woocommerce');
 var wooCommerce = new WooCommerce({
   url: 'http://klangsang-led.com',
+  ssl: true,
   consumerKey: 'ck_e95a3d1d2224538dfe42ac8fd84b48a408f5d2d1',
   secret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
 });
@@ -38,8 +39,6 @@ Parse.Cloud.define('postProducts', function(req, response) {
 
   wooCommerce.post('/products', dataReq, function(err, data, res) {
     console.log(data);
-    console.log(res);
-
     console.log("post error:"+err);
 
     response.success(data);
