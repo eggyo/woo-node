@@ -126,7 +126,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
 
 //------->
 Parse.Cloud.define('getProducts', function(req, response) {
-  WooCommerce.get('products?per_page=20', function(err, data, res) {
+  WooCommerce.get('products', function(err, data, res) {
     if (err == null) {
       var results = JSON.parse(res);
       response.success(results);
