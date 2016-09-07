@@ -84,12 +84,18 @@ Parse.Cloud.define('postProducts', function(req, response) {
   type: 'simple',
   regular_price: '100',
   description: 'รายละเอียดสินค้าแบบยาว',
-  short_description: 'รายละเอียดสินค้าแบบสั้น'
+  short_description: 'รายละเอียดสินค้าแบบสั้น',
+  images:[
+    {
+      id:pId,
+      position: 0
+    }
+  ]
 };
 
   WooCommerce.post('products', dataReq, function(err, data, res) {
     if (err == null) {
-      console.log(res);
+    /*  console.log(res);
       var resultsID = JSON.parse(res);
       var data2 = {
         images:[
@@ -102,9 +108,8 @@ Parse.Cloud.define('postProducts', function(req, response) {
       var productID = 'products/' + resultsID.id;
       WooCommerce.put(productID, data2, function(err, data, res) {
         response.success(res);
-      });
-
+      });*/
+      response.success(res);
     }
-
   });
 });
