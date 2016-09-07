@@ -118,7 +118,8 @@ Parse.Cloud.define('getCategories', function(req, response) {
 
   WooCommerce.get('products/categories', function(err, data, res) {
     if (err == null) {
-      response.success(res);
+      var results = JSON.parse(res);
+      response.success(results);
     }
   });
 });
