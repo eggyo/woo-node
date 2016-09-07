@@ -78,15 +78,19 @@ Parse.Cloud.define('postProducts', function(req, response) {
   var nameStr = reqData.name;
   var scrUrl = reqData.picUrl;
   var pId = reqData.id;
-  var categories = reqData.categories;
-  console.log('categories:'+categories);
-
+  var categoryItems = reqData.categories;
+  var _categories =[]
+  console.log('categoryItems:'+categoryItems);
+  for(var i=0;i<categories.length;i++){
+    _categories.push({id:categoryItems[i]});
+  }
   var dataReq = {
   name: nameStr,
   type: 'simple',
   regular_price: '100',
   description: 'รายละเอียดสินค้าแบบยาว',
   short_description: 'รายละเอียดสินค้าแบบสั้น',
+  categories:_categories,
   images:[
     {
       id:pId,
