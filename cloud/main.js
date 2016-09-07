@@ -134,7 +134,7 @@ Parse.Cloud.define('getProducts', function(req, response) {
       var totalPage = data.headers['x-wp-totalpages'];
       console.log('totalProducts:'+totalProducts+' | totalPage:'+totalPage);
       var results = JSON.parse(res);
-      response.success(results);
+      response.success({'results':results,'totalProducts':totalProducts,'totalPage':totalPage});
     }
   });
 });
