@@ -130,8 +130,8 @@ Parse.Cloud.define('getProducts', function(req, response) {
   var getProductsReq = 'products?per_page=20&page=' + page;
   WooCommerce.get(getProductsReq, function(err, data, res) {
     if (err == null) {
-      var totalProducts = data.headers.x-wp-total;
-      var totalPage = data.headers.x-wp-totalpages;
+      var totalProducts = data.headers['x-wp-total'];
+      var totalPage = data.headers['x-wp-totalpages'];
       console.log('totalProducts:'+totalProducts+' | totalPage:'+totalPage);
       var results = JSON.parse(res);
       response.success(results);
