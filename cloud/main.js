@@ -78,6 +78,8 @@ Parse.Cloud.define('postProducts', function(req, response) {
   var nameStr = reqData.name;
   var scrUrl = reqData.picUrl;
   var pId = reqData.id;
+  var categories = reqData.categories;
+  console.log('categories:'+categories);
 
   var dataReq = {
   name: nameStr,
