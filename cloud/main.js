@@ -15,11 +15,15 @@ var WooCommerce = new WooCommerceAPI({
   consumerSecret: 'cs_366e3a3766c2b7e389b0085ce87a2dc369448d11'
 });
 
+
+//------->
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 
 });
 
+
+//------->
 Parse.Cloud.define('testOrder', function(req, response) {
   var data = {
   payment_method: 'bacs',
@@ -65,14 +69,15 @@ Parse.Cloud.define('testOrder', function(req, response) {
     }
   ]
 };
-
-WooCommerce.post('orders', dataReq, function(err, data, res) {
-  console.log(res);
-  response.success(data);
-
+  WooCommerce.post('orders', dataReq, function(err, data, res) {
+    console.log(res);
+    response.success(data);
   });
 });
 
+
+
+//------->
 Parse.Cloud.define('postProducts', function(req, response) {
   var reqData = req.params.data;
   var nameStr = reqData.name;
@@ -98,7 +103,6 @@ Parse.Cloud.define('postProducts', function(req, response) {
     }
   ]
 };
-
   WooCommerce.post('products', dataReq, function(err, data, res) {
     if (err == null) {
     /*  console.log(res);
@@ -120,8 +124,19 @@ Parse.Cloud.define('postProducts', function(req, response) {
   });
 });
 
-Parse.Cloud.define('getCategories', function(req, response) {
+//------->
+Parse.Cloud.define('getProducts', function(req, response) {
+  WooCommerce.get('products?per_page=20', function(err, data, res) {
+    if (err == null) {
+      var results = JSON.parse(res);
+      response.success(results);
+    }
+  });
+});
 
+
+//--------->
+Parse.Cloud.define('getCategories', function(req, response) {
   WooCommerce.get('products/categories?per_page=60', function(err, data, res) {
     if (err == null) {
       var results = JSON.parse(res);
