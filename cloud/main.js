@@ -81,7 +81,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
   var categoryItems = reqData.categories;
   var _categories =[]
   console.log('categoryItems:'+categoryItems);
-  for(var i=0;i<categories.length;i++){
+  for(var i=0;i<categoryItems.length;i++){
     _categories.push({id:categoryItems[i]});
   }
   var dataReq = {
