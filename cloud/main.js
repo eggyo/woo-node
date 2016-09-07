@@ -116,7 +116,7 @@ Parse.Cloud.define('postProducts', function(req, response) {
 
 Parse.Cloud.define('getCategories', function(req, response) {
 
-  WooCommerce.get('products/categories', dataReq, function(err, data, res) {
+  WooCommerce.get('products/categories', function(err, data, res) {
     if (err == null) {
       response.success(res);
     }
