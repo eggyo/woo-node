@@ -170,13 +170,19 @@ Parse.Cloud.define('createdOrderNofPub', function(req, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('channels', 'admin'); // Set our channel
   Parse.Push.send({
-    where: pushQuery, // Set our Installation query
+    where: query,
     data: {
-      alert: "New Orders received!"
+      alert: 'You received new order!',
+      badge: 1,
+      sound: 'default'
     }
-  }, { success: function() {
-      console.log("#### PUSH OK");
-  }, error: function(error) {
-      console.log("#### PUSH ERROR" + error.message);
-  }, useMasterKey: true});
+  }, {
+  success: function() {
+    console.log('##### PUSH OK');
+  },
+  error: function(error) {
+    console.log('##### PUSH ERROR');
+  },
+  useMasterKey: true
+  });
 });
