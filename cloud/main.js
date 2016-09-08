@@ -149,7 +149,7 @@ Parse.Cloud.define('getOrders', function(req, response) {
       var totalPage = data.headers['x-wp-totalpages'];
       console.log('totalOrders:'+totalOrders+' | totalPage:'+totalPage);
       var results = JSON.parse(res);
-      response.success({'results':results,'totalOrders':totalProducts,'totalPage':totalPage});
+      response.success({'results':results,'totalOrders':totalOrders,'totalPage':totalPage});
     }
   });
 });
