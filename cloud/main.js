@@ -164,3 +164,19 @@ Parse.Cloud.define('getCategories', function(req, response) {
     }
   });
 });
+
+//--------->
+Parse.Cloud.define('createdOrderNofPub', function(req, response) {
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.containedIn('channels', ["admin"]); // targeting iOS devices only
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query
+    data: {
+    alert: "New Orders received!"
+    }
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
+});
