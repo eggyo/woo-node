@@ -139,6 +139,21 @@ Parse.Cloud.define('getProducts', function(req, response) {
   });
 });
 
+//------->
+Parse.Cloud.define('getOrders', function(req, response) {
+  var page = req.params.page;
+  var getOrdersReq = 'orders?per_page=20&page=' + page;
+  WooCommerce.get(getOrdersReq, function(err, data, res) {
+    if (err == null) {
+      var totalOrders = data.headers['x-wp-total'];
+      var totalPage = data.headers['x-wp-totalpages'];
+      console.log('totalOrders:'+totalOrders+' | totalPage:'+totalPage);
+      var results = JSON.parse(res);
+      response.success({'results':results,'totalOrders':totalProducts,'totalPage':totalPage});
+    }
+  });
+});
+
 
 //--------->
 Parse.Cloud.define('getCategories', function(req, response) {
