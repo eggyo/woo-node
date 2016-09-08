@@ -168,11 +168,11 @@ Parse.Cloud.define('getCategories', function(req, response) {
 //--------->
 Parse.Cloud.define('createdOrderNofPub', function(req, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.containedIn('channels', ["admin"]); // targeting iOS devices only
+  pushQuery.equalTo('channels', 'admin'); // Set our channel
   Parse.Push.send({
     where: pushQuery, // Set our Installation query
     data: {
-    alert: "New Orders received!"
+      alert: "New Orders received!"
     }
   }, { success: function() {
       console.log("#### PUSH OK");
