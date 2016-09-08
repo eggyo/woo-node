@@ -170,7 +170,7 @@ Parse.Cloud.define('createdOrderNofPub', function(req, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('channels', 'admin'); // Set our channel
   Parse.Push.send({
-    where: query,
+    where: pushQuery,
     data: {
       alert: 'You received new order!',
       badge: 1,
