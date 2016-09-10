@@ -70,7 +70,7 @@ app.use(mountPath, api);
 app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
-app.post('/', function(request, response){
+app.post('/createdOrderCallback', function(request, response){
   Parse.Cloud.run('createdOrderNofPub', { }).then(function(obj) {
     response.send(obj);
     console.log(obj);      // your JSON
