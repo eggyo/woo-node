@@ -72,8 +72,9 @@ app.get('/', function(req, res) {
 });
 app.post('/', function(request, response){
   console.log(request);      // your JSON
-  response.send(request);    // echo the result back
-  
+  Parse.Cloud.run('hello', { }).then(function(obj) {
+    response.send(obj);    // echo the result back
+  });
 });
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
