@@ -70,7 +70,10 @@ app.use(mountPath, api);
 app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
-
+app.post('/', function(request, response){
+  console.log(request.body);      // your JSON
+  response.send(request.body);    // echo the result back
+});
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
 app.get('/test', function(request, response) {
