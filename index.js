@@ -71,9 +71,10 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/', function(request, response){
-  console.log(request);      // your JSON
-  Parse.Cloud.run('hello', { }).then(function(obj) {
-    response.send(obj);    // echo the result back
+  Parse.Cloud.run('createdOrderNofPub', { }).then(function(obj) {
+    response.send(obj);
+    console.log(obj);      // your JSON
+    // echo the result back
   });
 });
 // There will be a test page available on the /test path of your server url

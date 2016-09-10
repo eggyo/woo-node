@@ -179,9 +179,13 @@ Parse.Cloud.define('createdOrderNofPub', function(req, response) {
   }, {
   success: function() {
     console.log('##### PUSH OK');
+    response.success({results:"done"}});
+
   },
   error: function(error) {
     console.log('##### PUSH ERROR');
+    response.error(error);
+
   },
   useMasterKey: true
   });
