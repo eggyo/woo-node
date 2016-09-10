@@ -179,7 +179,7 @@ Parse.Cloud.define('createdOrderNofPub', function(req, response) {
   }, {
   success: function() {
     console.log('##### PUSH OK');
-    response.success({results:"done"}});
+    response.success({results:"done"});
 
   },
   error: function(error) {
