@@ -189,7 +189,7 @@ Parse.Cloud.define('createdOrderNofPub', function(req, response) {
     where: pushQuery,
     data: {
       alert: 'You received new order!',
-      badge: 1,
+      badge: 'Increment',
       sound: 'default'
     }
   }, {
