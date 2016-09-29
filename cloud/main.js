@@ -153,7 +153,23 @@ Parse.Cloud.define('getOrders', function(req, response) {
     }
   });
 });
-
+//------->
+Parse.Cloud.define('updateOrderStatus', function(req, response) {
+  var orderId = req.params.orderId;
+  var status = req.params.status;
+  var data = {
+    status: status
+  };
+  var getOrdersReq = 'orders/' + orderId;
+  WooCommerce.put(getOrdersReq,data, function(err, data, res) {
+    if (err == null) {
+      var results = JSON.parse(res);
+      response.success({'results':results});
+    }else {
+      response.error(err);
+    }
+  });
+});
 
 //--------->
 Parse.Cloud.define('getCategories', function(req, response) {
