@@ -73,7 +73,9 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response){
-  callLineNof();
+  callLineNof(function(response){
+    
+  });
   Parse.Cloud.run('createdOrderNofPub', { }).then(function(obj) {
     response.send(obj);
     console.log(obj);      // your JSON
@@ -86,7 +88,7 @@ app.get('/test', function(request, response) {
 
 });
 
-function callLineNof() {
+function callLineNof(responseMsg) {
   console.log("callLineNof");
   var options = {
     url: 'https://notify-api.line.me/api/notify',
