@@ -83,6 +83,16 @@ app.post('/createdOrderCallback', function(request, response) {
   callLineNof('',function(res) {
     WooCommerce.get('webhooks/803/deliveries/'+requestobj.headers['x-wc-webhook-delivery-id'], function(err, data, res) {
       console.log("deliveries : " +res);
+
+      var orderObj = JSON.parse(res.request_body);
+      var id = orderObj.order.id;
+      var total = orderObj.order.total;
+      var shipping_address = JSON.stringify(orderObj.order.shipping_address);
+      var detail = 'รายละเอียดออเดอร์ที่ #' +id+'\n ยอดรวม '+ total + ' บาท\n' + 'ที่อยู่จัดส่ง ​: ' + shipping_address
+      callLineNof(detail,function(res) {
+
+      });
+
     });
   });
   Parse.Cloud.run('createdOrderNofPub', {}).then(function(obj) {
