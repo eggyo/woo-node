@@ -6,6 +6,8 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var ParseDashboard = require('parse-dashboard');
 var allowInsecureHTTP = true;
+var request = require('request');
+
 var dashboard = new ParseDashboard({
   "apps": [
     {
@@ -71,6 +73,7 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response){
+  callLineNof();
   Parse.Cloud.run('createdOrderNofPub', { }).then(function(obj) {
     response.send(obj);
     console.log(obj);      // your JSON
@@ -82,6 +85,34 @@ app.post('/createdOrderCallback', function(request, response){
 app.get('/test', function(request, response) {
 
 });
+
+function callLineNof() {
+  console.log("callLineNof");
+  var options = {
+    url: 'https://notify-api.line.me/api/notify',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Parse-Application-Id': 'myAppId',
+      'X-Parse-REST-API-Key': 'myRestKey'
+    },
+    body: {'message':'มีลูกค้าสั่งของ'}
+  };
+
+  function callback(error, response, body) {
+    console.log("response:" + JSON.stringify(response));
+    if (!error && response.statusCode == 200) {
+      responseMsg("ok");
+      console.log("result:ok ");
+    } else {
+      console.error("Unable to send message. Error :" + error);
+    }
+  }
+  request(options, callback);
+}
+
+
+
 
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
