@@ -77,17 +77,13 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response) {
-  console.log("createdOrderCallback request: " + CircularJSON.stringify(request)); // your JSON
+  response.end('It worked!');
   var requestobj = JSON.parse(CircularJSON.stringify(request));
-
   console.log("createdOrderCallback request id: " + requestobj.headers['x-wc-webhook-delivery-id']); // your JSON
-
-  WooCommerce.get('webhooks/803/deliveries/'+requestobj.headers['x-wc-webhook-delivery-id'], function(err, data, res) {
-    console.log("deliveries : " +res);
-  });
-
-  callLineNof(function(res) {
-    response.end('It worked!');
+  callLineNof('',function(res) {
+    WooCommerce.get('webhooks/803/deliveries/'+requestobj.headers['x-wc-webhook-delivery-id'], function(err, data, res) {
+      console.log("deliveries : " +res);
+    });
   });
   Parse.Cloud.run('createdOrderNofPub', {}).then(function(obj) {
     //response.end("obj");
@@ -101,7 +97,11 @@ app.get('/test', function(request, response) {
 
 });
 
-function callLineNof(responseMsg) {
+function callLineNof(msg,responseMsg) {
+  var m = msg;
+  if (!m){
+    m = 'มีลูกค้าสั่งของ';
+  }
   console.log("callLineNof");
   var options = {
     url: 'https://notify-api.line.me/api/notify',
@@ -111,7 +111,7 @@ function callLineNof(responseMsg) {
       'Authorization': 'Bearer 2WIXIAwOxM8tZVjjwMXufbmkvU4UsLq3OduQZskvtsm'
     },
     form: {
-        message: 'มีลูกค้าสั่งของ'
+        message: m
     }
   };
 
