@@ -104,9 +104,9 @@ function callLineNof(responseMsg) {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Bearer 2WIXIAwOxM8tZVjjwMXufbmkvU4UsLq3OduQZskvtsm'
     },
-    body: {
-      'message': 'มีลูกค้าสั่งของ'
-    }
+    body: JSON.stringify({
+        message: 'มีลูกค้าสั่งของ'
+    })
   };
 
   function callback(error, response, body) {
