@@ -78,6 +78,7 @@ app.get('/', function(req, res) {
 });
 app.post('/createdOrderCallback', function(request, response) {
   console.log("createdOrderCallback request: " + CircularJSON.stringify(request)); // your JSON
+  console.log("createdOrderCallback request id: " + request.id); // your JSON
 
   WooCommerce.get('webhooks/803/deliveries', function(err, data, res) {
     console.log(res);
