@@ -12,7 +12,9 @@
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
+    "parse-dashboard": "^1.2.0",
     "parse-server": "~2.2.12",
+    "path": "^0.12.7",
     "request": "^2.85.0",
     "woocommerce": "^2.2.2",
     "woocommerce-api": "^1.4.0"
