@@ -73,8 +73,10 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response){
+  console.log("createdOrderCallback:"+JSON.stringify(request));      // your JSON
+
   callLineNof(function(response){
-    
+
   });
   Parse.Cloud.run('createdOrderNofPub', { }).then(function(obj) {
     response.send(obj);
