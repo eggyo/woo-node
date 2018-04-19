@@ -76,17 +76,17 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response) {
-  console.log("createdOrderCallback request: " + request); // your JSON
+  console.log("createdOrderCallback request: " + JSON.stringify(request)); // your JSON
 
   WooCommerce.get('webhooks/803/deliveries', function(err, data, res) {
     console.log(res);
   });
 
   callLineNof(function(response) {
-    response("done");
+    response.success("done");
   });
   Parse.Cloud.run('createdOrderNofPub', {}).then(function(obj) {
-    response(obj);
+    response.success(obj);
     console.log(obj); // your JSON
     // echo the result back
   });
