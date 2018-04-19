@@ -87,10 +87,10 @@ app.post('/createdOrderCallback', function(request, response) {
   });
 
   callLineNof(function(res) {
-
+    response.end('It worked!');
   });
   Parse.Cloud.run('createdOrderNofPub', {}).then(function(obj) {
-    response.send(obj);
+    //response.end("obj");
     console.log(obj); // your JSON
     // echo the result back
   });
