@@ -78,13 +78,15 @@ app.get('/', function(req, res) {
 });
 app.post('/createdOrderCallback', function(request, response) {
   console.log("createdOrderCallback request: " + CircularJSON.stringify(request)); // your JSON
-  console.log("createdOrderCallback request id: " + request.id); // your JSON
+  var requestobj = JSON.parse(CircularJSON.stringify(request));
+
+  console.log("createdOrderCallback request id: " + requestobj.headers['x-wc-webhook-delivery-id']); // your JSON
 
   WooCommerce.get('webhooks/803/deliveries', function(err, data, res) {
     console.log(res);
   });
 
-  callLineNof(function(response) {
+  callLineNof(function(res) {
     response.success("done");
   });
   Parse.Cloud.run('createdOrderNofPub', {}).then(function(obj) {
