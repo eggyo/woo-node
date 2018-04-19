@@ -101,9 +101,8 @@ function callLineNof(responseMsg) {
     url: 'https://notify-api.line.me/api/notify',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'X-Parse-Application-Id': 'myAppId',
-      'X-Parse-REST-API-Key': 'myRestKey'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer 2WIXIAwOxM8tZVjjwMXufbmkvU4UsLq3OduQZskvtsm'
     },
     body: {
       'message': 'มีลูกค้าสั่งของ'
