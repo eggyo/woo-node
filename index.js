@@ -8,6 +8,7 @@ var ParseDashboard = require('parse-dashboard');
 var allowInsecureHTTP = true;
 var request = require('request');
 var WooCommerceAPI = require('woocommerce-api');
+var CircularJSON = require('circular-json');
 
 var WooCommerce = new WooCommerceAPI({
   url: 'http://klangsang-led.com',
@@ -76,7 +77,7 @@ app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 app.post('/createdOrderCallback', function(request, response) {
-  console.log("createdOrderCallback request: " + JSON.stringify(request)); // your JSON
+  console.log("createdOrderCallback request: " + CircularJSON.stringify(request)); // your JSON
 
   WooCommerce.get('webhooks/803/deliveries', function(err, data, res) {
     console.log(res);
