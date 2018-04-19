@@ -82,8 +82,8 @@ app.post('/createdOrderCallback', function(request, response) {
 
   console.log("createdOrderCallback request id: " + requestobj.headers['x-wc-webhook-delivery-id']); // your JSON
 
-  WooCommerce.get('webhooks/803/deliveries', function(err, data, res) {
-    console.log(res);
+  WooCommerce.get('webhooks/803/deliveries/'+requestobj.headers['x-wc-webhook-delivery-id'], function(err, data, res) {
+    console.log("deliveries : " +res);
   });
 
   callLineNof(function(res) {
