@@ -82,9 +82,9 @@ app.post('/createdOrderCallback', function(request, response) {
   console.log("createdOrderCallback request id: " + requestobj.headers['x-wc-webhook-delivery-id']); // your JSON
   callLineNof('',function(resp) {
     WooCommerce.get('webhooks/803/deliveries/'+requestobj.headers['x-wc-webhook-delivery-id'], function(err, data, res) {
-      console.log("deliveries request_body: " +res.request_body);
+      console.log("deliveries : " + res);
 
-      var orderObj = JSON.parse(res.request_body);
+      var orderObj = JSON.parse(JSON.parse(res).request_body);
       var id = orderObj.order.id;
       var total = orderObj.order.total;
       var shipping_address = JSON.stringify(orderObj.order.shipping_address);
