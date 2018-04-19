@@ -87,7 +87,7 @@ app.post('/createdOrderCallback', function(request, response) {
       var orderObj = JSON.parse(JSON.parse(res).request_body);
       var id = orderObj.order.id;
       var total = orderObj.order.total;
-      var shipping_address = JSON.stringify(orderObj.order.shipping_address);
+      var detail = 'http://klangsang-led.com/wp-admin/post.php?post='+id+'&action=edit';
       var line_items = orderObj.order.line_items;
       var item_ = '';
       for (var i = 0; i < line_items.length; i++) {
@@ -95,7 +95,7 @@ app.post('/createdOrderCallback', function(request, response) {
         var quantity = line_items[i].quantity;
         item_ = item_ + line_item_sku + ' x ' + quantity + ' ,';
       }
-      var detail = 'รายละเอียดออเดอร์ที่ #' +id+'\n ยอดรวม '+ total + ' บาท\n' + 'สินค้า : ' + item_ + '\nที่อยู่จัดส่ง ​: ' + shipping_address
+      var detail = 'รายละเอียดออเดอร์ที่ #' +id+'\n ยอดรวม '+ total + ' บาท\n' + 'สินค้า : ' + item_ + '\nรายละเอียดอื่นๆ ​: ' + detail
       callLineNof(detail,function(res) {
 
       });
