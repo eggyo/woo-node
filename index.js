@@ -88,7 +88,14 @@ app.post('/createdOrderCallback', function(request, response) {
       var id = orderObj.order.id;
       var total = orderObj.order.total;
       var shipping_address = JSON.stringify(orderObj.order.shipping_address);
-      var detail = 'รายละเอียดออเดอร์ที่ #' +id+'\n ยอดรวม '+ total + ' บาท\n' + 'ที่อยู่จัดส่ง ​: ' + shipping_address
+      var line_items = orderObj.order.line_items;
+      var item_ = '';
+      for (var i = 0; i < line_items.length; i++) {
+        var line_item_sku = line_items[i].sku;
+        var quantity = line_items[i].quantity;
+        item_ = item_ + line_item_sku + ' x ' + quantity + ' ,';
+      }
+      var detail = 'รายละเอียดออเดอร์ที่ #' +id+'\n ยอดรวม '+ total + ' บาท\n' + 'สินค้า : ' + item_ + '\nที่อยู่จัดส่ง ​: ' + shipping_address
       callLineNof(detail,function(res) {
 
       });
